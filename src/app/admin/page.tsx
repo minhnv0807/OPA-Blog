@@ -56,7 +56,7 @@ export default async function AdminDashboard() {
     { label: "New Messages", value: newMessages, icon: MessageSquare, color: "#f59e0b", href: "/admin/messages" },
     { label: "Categories", value: totalCategories, icon: FolderOpen, color: "#ec4899", href: "/admin/categories" },
     { label: "Users", value: totalUsers, icon: Users, color: "#06b6d4", href: "/admin/users" },
-    { label: "Subscribers", value: totalSubscribers, icon: Mail, color: "#14b8a6", href: "/admin" },
+    { label: "Subscribers", value: totalSubscribers, icon: Mail, color: "#14b8a6", href: "/admin/subscribers" },
   ];
 
   return (

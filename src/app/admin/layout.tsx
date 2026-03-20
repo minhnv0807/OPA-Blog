@@ -7,6 +7,7 @@ import {
   MessageSquare,
   FolderOpen,
   Users,
+  Mail,
   LogOut,
   Shield,
 } from "lucide-react";
@@ -16,6 +17,7 @@ const sidebarLinks = [
   { href: "/admin/posts", label: "Posts", icon: FileText, adminOnly: false },
   { href: "/admin/categories", label: "Categories", icon: FolderOpen, adminOnly: false },
   { href: "/admin/messages", label: "Messages", icon: MessageSquare, adminOnly: false },
+  { href: "/admin/subscribers", label: "Subscribers", icon: Mail, adminOnly: false },
   { href: "/admin/users", label: "Users", icon: Users, adminOnly: true },
 ];
 
