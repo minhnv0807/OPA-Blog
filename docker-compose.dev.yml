@@ -1,34 +1,36 @@
 services:
   app:
-    build: .
-    container_name: blog_opa_app
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: blog_opa_dev
     restart: unless-stopped
-    env_file: .env.production
+    env_file: .env.local
     environment:
-      NODE_ENV: production
-      MONGODB_URI: mongodb://root:${MONGO_ROOT_PASSWORD}@mongo:27017/blog-opa?authSource=admin
+      NODE_ENV: development
+      MONGODB_URI: mongodb://root:devpass123@mongo:27017/blog-opa?authSource=admin
     ports:
       - '3000:3000'
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
     depends_on:
       mongo:
         condition: service_healthy
     networks:
       - blog_net
-    healthcheck:
-      test: wget -qO- http://localhost:3000 > /dev/null || exit 1
-      interval: 15s
-      timeout: 5s
-      retries: 5
 
   mongo:
     image: mongo:7.0
-    container_name: blog_opa_mongo
+    container_name: blog_opa_mongo_dev
     restart: unless-stopped
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      MONGO_INITDB_ROOT_PASSWORD: devpass123
+    ports:
+      - '27017:27017'
     volumes:
-      - mongo_data:/data/db
+      - mongo_dev_data:/data/db
     networks:
       - blog_net
     healthcheck:
@@ -42,4 +44,4 @@ networks:
     driver: bridge
 
 volumes:
-  mongo_data:
+  mongo_dev_data:

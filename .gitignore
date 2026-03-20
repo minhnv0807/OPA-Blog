@@ -44,3 +44,7 @@ next-env.d.ts
 recordings/
 screenshots/
 reference_shots/
+
+# env secrets
+.env.production
+.env.local
