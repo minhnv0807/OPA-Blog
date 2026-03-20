@@ -4,6 +4,7 @@ import { Post } from "@/lib/models/Post";
 import { Category } from "@/lib/models/Category";
 import { requireAdmin } from "@/lib/auth";
 import { getCached, invalidateCache } from "@/lib/cache";
+import { sendNewPostNotification } from "@/lib/mail";
 import slugify from "slugify";
 import readingTime from "reading-time";
 
@@ -79,5 +80,15 @@ export async function POST(req: NextRequest) {
   });
 
   await invalidateCache("posts:*");
+
+  if (body.status === "published") {
+    sendNewPostNotification({
+      title: body.title,
+      slug,
+      excerpt: body.excerpt || "",
+      coverImage: body.coverImage,
+    });
+  }
+
   return Response.json({ success: true, data: post }, { status: 201 });
 }
