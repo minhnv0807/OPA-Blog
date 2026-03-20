@@ -58,12 +58,29 @@ export function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent<HTMLFormElement>) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setEmail("");
-      setTimeout(() => setSubscribed(false), 3000);
+    if (!email.trim() || submitting) return;
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubscribed(true);
+        setEmail("");
+        setTimeout(() => setSubscribed(false), 3000);
+      }
+    } catch {
+      // silently fail for newsletter
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -109,7 +126,7 @@ export function Footer() {
                   type="submit"
                   className="shrink-0 rounded-full bg-[#155eef] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#0b4fd1] transition-colors shadow-sm sm:w-auto"
                 >
-                  {subscribed ? "Đã gửi!" : "Đăng ký"}
+                  {subscribed ? "Đã gửi!" : submitting ? "..." : "Đăng ký"}
                 </button>
               </form>
             </div>
