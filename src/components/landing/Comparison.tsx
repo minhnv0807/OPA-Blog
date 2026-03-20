@@ -43,6 +43,13 @@ export function Comparison() {
     const onScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
+
+      // Force complete state when user reaches the end of this section
+      if (rect.bottom <= window.innerHeight + 24) {
+        setActiveStep(10);
+        return;
+      }
+
       const sectionH = sectionRef.current.offsetHeight;
       const scrolled = -rect.top; // how far we've scrolled into section
       const ratio = Math.max(0, Math.min(scrolled / (sectionH - window.innerHeight), 1));
