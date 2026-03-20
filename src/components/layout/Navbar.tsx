@@ -225,8 +225,29 @@ export function Navbar() {
           )}
         </div>
 
-        {/* Mobile menu */}
-        <div className="md:hidden">
+        {/* Mobile: auth buttons + hamburger */}
+        <div className="md:hidden flex items-center gap-2">
+          {status !== "loading" && !isLoggedIn && (
+            <>
+              <Link href="/login">
+                <button className="text-xs font-medium px-3 py-1.5 rounded-full text-[#475467] hover:text-[#101828] transition-colors">
+                  Đăng Nhập
+                </button>
+              </Link>
+              <Link href="/register">
+                <button className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[#155eef] text-white hover:bg-[#0b4fd1] transition-colors">
+                  Đăng Ký
+                </button>
+              </Link>
+            </>
+          )}
+          {isLoggedIn && (
+            <div className="h-7 w-7 rounded-full bg-[#155eef] flex items-center justify-center">
+              <span className="text-white text-xs font-bold">
+                {(session?.user?.name || "U").charAt(0).toUpperCase()}
+              </span>
+            </div>
+          )}
           <Sheet>
             <SheetTrigger className="inline-flex items-center justify-center rounded-md p-2 text-[#101828]">
               <Menu className="h-5 w-5" />
