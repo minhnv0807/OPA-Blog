@@ -153,26 +153,32 @@ export function Hero() {
 
       {/* ===== ROBOTS + ORBIT VISUAL ===== */}
       <div className="relative z-5 mt-8 w-full md:mt-12">
-        {/* Left Robot — absolute, fades into bg */}
+        {/* Left Robot — transparent PNG, Hollywood style */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1, duration: 1.2 }}
-          className="hidden md:block absolute left-0 bottom-[25%] z-10 w-[220px] lg:w-[300px] xl:w-[360px]"
+          className="hidden md:block absolute left-[2%] lg:left-[5%] xl:left-[8%] bottom-[15%] z-10"
         >
-          <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
-            <Image
-              src="/images/robot-right.jpg"
-              alt="AI Network"
-              width={360}
-              height={220}
-              className="w-full"
-              style={{
-                mixBlendMode: "lighten",
-                maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 80%, transparent 100%)",
-                WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 80%, transparent 100%)",
-              }}
-            />
+          <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
+            <div className="relative">
+              {/* Ground glow */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-6 rounded-full bg-[#155eef]/20 blur-[20px]" />
+              {/* Body rim light */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{ background: "radial-gradient(ellipse at 60% 30%, rgba(92,156,252,0.15) 0%, transparent 60%)" }}
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+              <Image
+                src="/images/robot-right.png"
+                alt="AI Agent"
+                width={320}
+                height={400}
+                className="relative w-[160px] lg:w-[220px] xl:w-[280px] drop-shadow-[0_0_30px_rgba(21,94,239,0.3)]"
+              />
+            </div>
           </motion.div>
         </motion.div>
 
@@ -365,41 +371,46 @@ export function Hero() {
         </div>
         </div>
 
-        {/* Right Robot — absolute, fades into bg */}
+        {/* Right Robot — transparent PNG, Hollywood style */}
         <motion.div
           initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.3, duration: 1.2 }}
-          className="hidden md:block absolute right-0 bottom-[25%] z-10 w-[220px] lg:w-[300px] xl:w-[360px]"
+          className="hidden md:block absolute right-[2%] lg:right-[5%] xl:right-[8%] bottom-[15%] z-10"
         >
-          <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}>
-            <Image
-              src="/images/robot-left.jpg"
-              alt="AI Agent"
-              width={360}
-              height={220}
-              className="w-full"
-              style={{
-                mixBlendMode: "lighten",
-                maskImage: "linear-gradient(to left, transparent 0%, black 10%, black 80%, transparent 100%)",
-                WebkitMaskImage: "linear-gradient(to left, transparent 0%, black 10%, black 80%, transparent 100%)",
-              }}
-            />
+          <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}>
+            <div className="relative">
+              {/* Ground glow */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-6 rounded-full bg-[#155eef]/20 blur-[20px]" />
+              {/* Body rim light */}
+              <motion.div
+                className="absolute inset-0 rounded-full"
+                style={{ background: "radial-gradient(ellipse at 40% 30%, rgba(92,156,252,0.15) 0%, transparent 60%)" }}
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+              />
+              <Image
+                src="/images/robot-left.png"
+                alt="AI Network"
+                width={320}
+                height={400}
+                className="relative w-[160px] lg:w-[220px] xl:w-[280px] drop-shadow-[0_0_30px_rgba(21,94,239,0.3)]"
+              />
+            </div>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Mobile robots */}
-      <div className="flex md:hidden gap-2 mt-4 justify-center overflow-hidden">
+      <div className="flex md:hidden gap-4 mt-4 justify-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1 }}>
-          <Image src="/images/robot-left.jpg" alt="AI Agent" width={160} height={100}
-            className="w-[150px]"
-            style={{ mixBlendMode: "lighten", maskImage: "radial-gradient(ellipse, black 50%, transparent 80%)", WebkitMaskImage: "radial-gradient(ellipse, black 50%, transparent 80%)" }} />
+          <Image src="/images/robot-right.png" alt="AI Agent" width={120} height={160}
+            className="w-[100px] drop-shadow-[0_0_20px_rgba(21,94,239,0.3)]" />
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3 }}>
-          <Image src="/images/robot-right.jpg" alt="AI Network" width={160} height={100}
-            className="w-[150px]"
-            style={{ mixBlendMode: "lighten", maskImage: "radial-gradient(ellipse, black 50%, transparent 80%)", WebkitMaskImage: "radial-gradient(ellipse, black 50%, transparent 80%)" }} />
+          <Image src="/images/robot-left.png" alt="AI Network" width={120} height={160}
+            className="w-[100px] drop-shadow-[0_0_20px_rgba(21,94,239,0.3)]"
+            />
         </motion.div>
       </div>
 
