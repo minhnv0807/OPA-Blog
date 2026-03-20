@@ -130,6 +130,57 @@ function SpeechBubble({
   );
 }
 
+function LoginForm({
+  email, setEmail, password, setPassword, error, loading, onSubmit,
+}: {
+  email: string; setEmail: (v: string) => void;
+  password: string; setPassword: (v: string) => void;
+  error: string; loading: boolean;
+  onSubmit: (e: React.FormEvent) => void;
+}) {
+  return (
+    <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg shadow-black/[0.04]">
+      <div className="text-center mb-8">
+        <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)]">
+          <span className="text-gradient">OPA</span> Login
+        </h1>
+        <p className="text-sm text-[#667085] mt-2">Đăng nhập để quản lý blog</p>
+      </div>
+
+      <form onSubmit={onSubmit} className="space-y-4">
+        {error && (
+          <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+            <AlertCircle className="h-4 w-4 shrink-0" />
+            {error}
+          </div>
+        )}
+
+        <div>
+          <label htmlFor="email" className="text-sm font-medium text-[#344054] mb-1.5 block">Email</label>
+          <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+            placeholder="admin@opa.vn" required className="border-gray-300 bg-white focus:border-[#155eef] focus:ring-1 focus:ring-[#155eef]/20" />
+        </div>
+
+        <div>
+          <label htmlFor="password" className="text-sm font-medium text-[#344054] mb-1.5 block">Mật khẩu</label>
+          <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}
+            placeholder="Nhập mật khẩu" required className="border-gray-300 bg-white focus:border-[#155eef] focus:ring-1 focus:ring-[#155eef]/20" />
+        </div>
+
+        <Button type="submit" className="w-full gap-2 bg-[#155eef] hover:bg-[#0b4fd1]" disabled={loading}>
+          <LogIn className="h-4 w-4" />
+          {loading ? "Đang đăng nhập..." : "Đăng Nhập"}
+        </Button>
+      </form>
+
+      <p className="text-center text-sm text-[#667085] mt-6">
+        Chưa có tài khoản?{" "}
+        <Link href="/register" className="text-[#155eef] font-medium hover:underline">Đăng Ký</Link>
+      </p>
+    </div>
+  );
+}
+
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -158,91 +209,40 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-[#f8fafc] overflow-hidden">
-      <div className="relative w-full max-w-4xl flex items-center justify-center">
-        {/* Left robot */}
-        <div className="hidden lg:flex flex-col items-center gap-4 mr-8">
-          <SpeechBubble
-            text="Biết tìm giải pháp AI ở đâu chưa?"
-            side="left"
-            delay={0.5}
-          />
+    <div className="min-h-screen flex items-center justify-center px-4 py-8 bg-[#f8fafc] overflow-hidden">
+      {/* Desktop: horizontal layout */}
+      <div className="relative w-full max-w-4xl hidden lg:flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4 mr-8">
+          <SpeechBubble text="Biết tìm giải pháp AI ở đâu chưa?" side="left" delay={0.5} />
           <Robot side="left" />
         </div>
 
-        {/* Login form */}
         <div className="w-full max-w-sm shrink-0">
-          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg shadow-black/[0.04]">
-            <div className="text-center mb-8">
-              <h1 className="text-2xl font-bold font-[family-name:var(--font-heading)]">
-                <span className="text-gradient">OPA</span> Login
-              </h1>
-              <p className="text-sm text-[#667085] mt-2">
-                Đăng nhập để quản lý blog
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {error && (
-                <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
-                  <AlertCircle className="h-4 w-4 shrink-0" />
-                  {error}
-                </div>
-              )}
-
-              <div>
-                <label htmlFor="email" className="text-sm font-medium text-[#344054] mb-1.5 block">
-                  Email
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@opa.vn"
-                  required
-                  className="border-gray-300 bg-white focus:border-[#155eef] focus:ring-1 focus:ring-[#155eef]/20"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="password" className="text-sm font-medium text-[#344054] mb-1.5 block">
-                  Mật khẩu
-                </label>
-                <Input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Nhập mật khẩu"
-                  required
-                  className="border-gray-300 bg-white focus:border-[#155eef] focus:ring-1 focus:ring-[#155eef]/20"
-                />
-              </div>
-
-              <Button type="submit" className="w-full gap-2 bg-[#155eef] hover:bg-[#0b4fd1]" disabled={loading}>
-                <LogIn className="h-4 w-4" />
-                {loading ? "Đang đăng nhập..." : "Đăng Nhập"}
-              </Button>
-            </form>
-
-            <p className="text-center text-sm text-[#667085] mt-6">
-              Chưa có tài khoản?{" "}
-              <Link href="/register" className="text-[#155eef] font-medium hover:underline">
-                Đăng Ký
-              </Link>
-            </p>
-          </div>
+          <LoginForm email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} loading={loading} onSubmit={handleSubmit} />
         </div>
 
-        {/* Right robot */}
-        <div className="hidden lg:flex flex-col items-center gap-4 ml-8">
-          <SpeechBubble
-            text="Ở OPA chứ ở đâu! 🚀"
-            side="right"
-            delay={1.5}
-          />
+        <div className="flex flex-col items-center gap-4 ml-8">
+          <SpeechBubble text="Ở OPA chứ ở đâu! 🚀" side="right" delay={1.5} />
           <Robot side="right" />
+        </div>
+      </div>
+
+      {/* Mobile: vertical layout — robot top, form, robot bottom */}
+      <div className="w-full max-w-sm lg:hidden flex flex-col items-center">
+        <div className="flex items-end gap-3 mb-4">
+          <div className="scale-75 origin-bottom">
+            <Robot side="left" />
+          </div>
+          <SpeechBubble text="Biết tìm giải pháp AI ở đâu chưa?" side="left" delay={0.5} />
+        </div>
+
+        <LoginForm email={email} setEmail={setEmail} password={password} setPassword={setPassword} error={error} loading={loading} onSubmit={handleSubmit} />
+
+        <div className="flex items-start gap-3 mt-4">
+          <SpeechBubble text="Ở OPA chứ ở đâu! 🚀" side="right" delay={1.5} />
+          <div className="scale-75 origin-top">
+            <Robot side="right" />
+          </div>
         </div>
       </div>
     </div>
