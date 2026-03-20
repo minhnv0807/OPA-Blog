@@ -54,8 +54,10 @@ export function Comparison() {
 
   const manualHours = activeStep * 12;
   const aiMin = Math.min(Math.ceil(activeStep * 1.5), 15);
-  const currentStep = isMobile ? 10 : activeStep;
-  const currentAiStep = isMobile ? 4 : Math.ceil(activeStep / 2.5);
+  const currentStep = activeStep;
+  const currentAiStep = Math.ceil(activeStep / 2.5);
+  const progressWidth = Math.min((activeStep / 4) * 100, 100);
+  const aiHeaderOnBlue = progressWidth >= 55;
 
   return (
     <section ref={sectionRef} id="comparison" className="relative bg-[#f8fafc] px-4 py-16 md:px-6 md:py-20">
@@ -84,27 +86,27 @@ export function Comparison() {
               )}
             </div>
             <div className="flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5">
-              <span className="text-sm font-bold tabular-nums w-8 text-right text-white">{isMobile ? 120 : manualHours}</span>
+              <span className="text-sm font-bold tabular-nums w-8 text-right text-white">{manualHours}</span>
               <span className="text-xs text-white/70">Hours</span>
             </div>
           </div>
           <div className="rounded-2xl border border-gray-200 shadow-sm overflow-hidden relative">
             <div
               className="absolute inset-0 bg-[#155eef] rounded-2xl transition-all duration-500 ease-out"
-              style={{ width: `${Math.min((activeStep / 4) * 100, 100)}%` }}
+              style={{ width: `${progressWidth}%` }}
             />
             <div className="relative px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <h3 className={`text-base md:text-lg font-bold transition-colors duration-300 ${currentStep > 0 ? "text-white" : "text-[#101828]"}`}>OPA AI Process</h3>
+                <h3 className={`text-base md:text-lg font-bold transition-colors duration-300 ${aiHeaderOnBlue ? "text-white" : "text-[#101828]"}`}>OPA AI Process</h3>
                 {currentStep >= 4 && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white">
+                  <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold ${aiHeaderOnBlue ? "bg-white/20 text-white" : "bg-[#155eef]/10 text-[#155eef]"}`}>
                     <Zap className="h-3 w-3" />Done
                   </span>
                 )}
               </div>
-              <div className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 ${currentStep > 2 ? "bg-white/20" : "bg-gray-100"}`}>
-                <span className={`text-sm font-bold tabular-nums w-6 text-right transition-colors duration-300 ${currentStep > 2 ? "text-white" : "text-[#101828]"}`}>{isMobile ? 15 : aiMin}</span>
-                <span className={`text-xs transition-colors duration-300 ${currentStep > 2 ? "text-white/80" : "text-[#667085]"}`}>Min</span>
+              <div className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 ${aiHeaderOnBlue ? "bg-white/20" : "bg-gray-100"}`}>
+                <span className={`text-sm font-bold tabular-nums w-6 text-right transition-colors duration-300 ${aiHeaderOnBlue ? "text-white" : "text-[#101828]"}`}>{aiMin}</span>
+                <span className={`text-xs transition-colors duration-300 ${aiHeaderOnBlue ? "text-white/80" : "text-[#667085]"}`}>Min</span>
               </div>
             </div>
           </div>
