@@ -116,11 +116,12 @@ export function Hero() {
 
       {/* ===== VISUAL ===== */}
       <div className="relative z-5 mt-8 flex w-full justify-center md:mt-10">
+        <div className="relative h-[229px] w-[285px] sm:h-[296px] sm:w-[368px] md:h-[370px] md:w-[460px]">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="relative origin-top scale-[0.62] sm:scale-[0.8] md:scale-100"
+          className="relative origin-top-left scale-[0.62] sm:scale-[0.8] md:scale-100"
           style={{ width: 460, height: 370 }}
         >
         {/* Orbit ring */}
@@ -374,6 +375,7 @@ export function Hero() {
           </AnimatePresence>
         </div>
         </motion.div>
+        </div>
       </div>
 
       {/* Scroll */}
