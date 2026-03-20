@@ -25,6 +25,7 @@ const aiSteps = [
 ];
 
 const CARD_H = 48;
+const MOBILE_CARD_TOP = 132;
 
 export function Comparison() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -212,7 +213,7 @@ export function Comparison() {
               {manualSteps.map((step, i) => {
                 const done = i < currentStep;
                 return (
-                  <div key={i} className="mb-4">
+                  <div key={i} className="mb-4 sticky" style={{ top: MOBILE_CARD_TOP + i * CARD_H, zIndex: 10 + i }}>
                     <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -260,7 +261,7 @@ export function Comparison() {
               {aiSteps.map((step, i) => {
                 const done = i < currentAiStep;
                 return (
-                  <div key={i} className="mb-4">
+                  <div key={i} className="mb-4 sticky" style={{ top: MOBILE_CARD_TOP + i * CARD_H, zIndex: 10 + i }}>
                     <motion.div
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
