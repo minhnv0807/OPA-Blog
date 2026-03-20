@@ -3,43 +3,16 @@ services:
     build: .
     container_name: blog_opa_app
     restart: unless-stopped
-    env_file: .env.production
     environment:
       NODE_ENV: production
-      MONGODB_URI: mongodb://root:${MONGO_ROOT_PASSWORD}@mongo:27017/blog-opa?authSource=admin
+      MONGODB_URI: mongodb+srv://nguynanh13_db_user:nguyen123@cluster0.fvly7tb.mongodb.net/blog-opa?retryWrites=true&w=majority&appName=Cluster0
+      AUTH_SECRET: ${AUTH_SECRET:-opa-blog-secret-key-2026-change-me}
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+      HOSTNAME: "0.0.0.0"
     ports:
       - '3000:3000'
-    depends_on:
-      mongo:
-        condition: service_healthy
-    networks:
-      - blog_net
     healthcheck:
       test: wget -qO- http://localhost:3000 > /dev/null || exit 1
       interval: 15s
       timeout: 5s
       retries: 5
-
-  mongo:
-    image: mongo:7.0
-    container_name: blog_opa_mongo
-    restart: unless-stopped
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
-    volumes:
-      - mongo_data:/data/db
-    networks:
-      - blog_net
-    healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
-networks:
-  blog_net:
-    driver: bridge
-
-volumes:
-  mongo_data:
