@@ -70,6 +70,9 @@ export function Comparison() {
 
   const manualHours = activeStep * 12;
   const aiMin = Math.min(Math.ceil(activeStep * 1.5), 15);
+  const isFinalPhase = activeStep >= 9;
+  const manualHoursDisplay = isFinalPhase ? 120 : manualHours;
+  const aiMinDisplay = isFinalPhase ? 15 : aiMin;
   const currentStep = activeStep;
   const currentAiStep = Math.ceil(activeStep / 2.5);
   const progressWidth = Math.min((activeStep / 4) * 100, 100);
@@ -104,7 +107,7 @@ export function Comparison() {
                   )}
                 </div>
                 <div className="flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5">
-                  <span className="text-sm font-bold tabular-nums w-8 text-right text-white">{manualHours}</span>
+                  <span className="text-sm font-bold tabular-nums w-8 text-right text-white">{manualHoursDisplay}</span>
                   <span className="text-xs text-white/70">Hours</span>
                 </div>
               </div>
@@ -123,7 +126,7 @@ export function Comparison() {
                     )}
                   </div>
                   <div className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 ${aiHeaderOnBlue ? "bg-white/20" : "bg-gray-100"}`}>
-                    <span className={`text-sm font-bold tabular-nums w-6 text-right transition-colors duration-300 ${aiHeaderOnBlue ? "text-white" : "text-[#101828]"}`}>{aiMin}</span>
+                    <span className={`text-sm font-bold tabular-nums w-6 text-right transition-colors duration-300 ${aiHeaderOnBlue ? "text-white" : "text-[#101828]"}`}>{aiMinDisplay}</span>
                     <span className={`text-xs transition-colors duration-300 ${aiHeaderOnBlue ? "text-white/80" : "text-[#667085]"}`}>Min</span>
                   </div>
                 </div>
@@ -219,7 +222,7 @@ export function Comparison() {
                     )}
                   </div>
                   <div className="flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1.5">
-                    <span className="text-sm font-bold tabular-nums w-8 text-right text-white">{manualHours}</span>
+                    <span className="text-sm font-bold tabular-nums w-8 text-right text-white">{manualHoursDisplay}</span>
                     <span className="text-xs text-white/70">Hours</span>
                   </div>
                 </div>
@@ -267,7 +270,7 @@ export function Comparison() {
                     )}
                   </div>
                   <div className="flex items-center gap-1.5 rounded-full bg-white/85 px-3 py-1.5">
-                    <span className="text-sm font-bold tabular-nums w-6 text-right text-[#101828]">{aiMin}</span>
+                    <span className="text-sm font-bold tabular-nums w-6 text-right text-[#101828]">{aiMinDisplay}</span>
                     <span className="text-xs text-[#667085]">Min</span>
                   </div>
                 </div>
