@@ -153,18 +153,16 @@ export function Hero() {
 
       {/* ===== ROBOTS + ORBIT VISUAL ===== */}
       <div className="relative z-5 mt-8 w-full md:mt-12">
-        {/* Left Robot — transparent PNG, Hollywood style */}
+        {/* Left Robot — flipped to face right, Hollywood style */}
         <motion.div
           initial={{ opacity: 0, x: -80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1, duration: 1.2 }}
-          className="hidden md:block absolute left-[2%] lg:left-[5%] xl:left-[8%] bottom-[15%] z-10"
+          className="hidden md:block absolute left-[1%] lg:left-[3%] xl:left-[6%] bottom-[25%] z-10"
         >
           <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
             <div className="relative">
-              {/* Ground glow */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-6 rounded-full bg-[#155eef]/20 blur-[20px]" />
-              {/* Body rim light */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-8 rounded-full bg-[#155eef]/25 blur-[25px]" />
               <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{ background: "radial-gradient(ellipse at 60% 30%, rgba(92,156,252,0.15) 0%, transparent 60%)" }}
@@ -174,9 +172,10 @@ export function Hero() {
               <Image
                 src="/images/robot-right.png"
                 alt="AI Agent"
-                width={320}
-                height={400}
-                className="relative w-[160px] lg:w-[220px] xl:w-[280px] drop-shadow-[0_0_30px_rgba(21,94,239,0.3)]"
+                width={400}
+                height={500}
+                className="relative w-[200px] lg:w-[280px] xl:w-[350px] drop-shadow-[0_0_40px_rgba(21,94,239,0.35)]"
+                style={{ transform: "scaleX(-1)" }}
               />
             </div>
           </motion.div>
@@ -371,18 +370,16 @@ export function Hero() {
         </div>
         </div>
 
-        {/* Right Robot — transparent PNG, Hollywood style */}
+        {/* Right Robot — original orientation */}
         <motion.div
           initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.3, duration: 1.2 }}
-          className="hidden md:block absolute right-[2%] lg:right-[5%] xl:right-[8%] bottom-[15%] z-10"
+          className="hidden md:block absolute right-[1%] lg:right-[3%] xl:right-[6%] bottom-[25%] z-10"
         >
           <motion.div animate={{ y: [0, -12, 0] }} transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}>
             <div className="relative">
-              {/* Ground glow */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-6 rounded-full bg-[#155eef]/20 blur-[20px]" />
-              {/* Body rim light */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-8 rounded-full bg-[#155eef]/25 blur-[25px]" />
               <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{ background: "radial-gradient(ellipse at 40% 30%, rgba(92,156,252,0.15) 0%, transparent 60%)" }}
@@ -392,9 +389,9 @@ export function Hero() {
               <Image
                 src="/images/robot-left.png"
                 alt="AI Network"
-                width={320}
-                height={400}
-                className="relative w-[160px] lg:w-[220px] xl:w-[280px] drop-shadow-[0_0_30px_rgba(21,94,239,0.3)]"
+                width={400}
+                height={500}
+                className="relative w-[200px] lg:w-[280px] xl:w-[350px] drop-shadow-[0_0_40px_rgba(21,94,239,0.35)]"
               />
             </div>
           </motion.div>
