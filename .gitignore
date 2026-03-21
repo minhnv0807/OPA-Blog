@@ -48,3 +48,13 @@ reference_shots/
 # env secrets
 .env.production
 .env.local
+
+# claude code local config
+.claude/
+
+# raw asset files (processed versions in public/images/)
+*.jpg
+*.jpeg
+!public/**/*.jpg
+robot*.png
+download.png
