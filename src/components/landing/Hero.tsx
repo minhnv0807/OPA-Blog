@@ -54,75 +54,13 @@ export function Hero() {
   const showRadar = stage === 0;
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pb-8 pt-24 sm:px-6 md:pt-16"
-      style={{ background: "linear-gradient(180deg, #070b18 0%, #0c1529 30%, #111d3a 55%, #1a2a52 70%, #f8fafc 100%)" }}
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-4 pb-8 pt-24 sm:px-6 md:pt-16"
     >
-      {/* ===== FUTURISTIC BACKGROUND ===== */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Stars */}
-        {[...Array(40)].map((_, i) => (
-          <motion.div
-            key={`star-${i}`}
-            className="absolute rounded-full bg-white"
-            style={{
-              width: Math.random() * 2 + 1,
-              height: Math.random() * 2 + 1,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 60}%`,
-            }}
-            animate={{ opacity: [0.2, 0.8, 0.2] }}
-            transition={{
-              duration: 2 + Math.random() * 3,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-
-        {/* Aurora glow — top */}
-        <motion.div
-          className="absolute -top-[200px] left-1/2 -translate-x-1/2 w-[1200px] h-[600px] rounded-full"
-          style={{ background: "radial-gradient(ellipse, rgba(21,94,239,0.15) 0%, rgba(139,92,246,0.08) 40%, transparent 70%)" }}
-          animate={{ scale: [1, 1.1, 1], opacity: [0.8, 1, 0.8] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Nebula orbs */}
-        <motion.div
-          className="absolute top-[15%] left-[5%] w-[500px] h-[500px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 60%)" }}
-          animate={{ x: [0, 40, 0], y: [0, -30, 0] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-[10%] right-[5%] w-[400px] h-[400px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(21,94,239,0.1) 0%, transparent 60%)" }}
-          animate={{ x: [0, -30, 0], y: [0, 25, 0] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute top-[40%] left-[40%] w-[300px] h-[300px] rounded-full"
-          style={{ background: "radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 60%)" }}
-          animate={{ scale: [1, 1.3, 1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* Grid — subtle, only top half */}
-        <div className="absolute inset-0 h-[60%] opacity-[0.04]" style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
-          backgroundSize: "80px 80px",
-          maskImage: "linear-gradient(to bottom, black 0%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 100%)",
-        }} />
-
-        {/* Horizon glow line */}
-        <div className="absolute bottom-[30%] left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#155eef]/20 to-transparent" />
-      </div>
 
       {/* ===== HERO TEXT ===== */}
       <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="relative z-10 mx-auto max-w-4xl px-2 text-center sm:px-6">
         <motion.div variants={fadeUp} className="mb-6">
-          <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 px-5 py-2 text-sm font-medium text-white">
+          <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 border border-gray-200 px-5 py-2 text-sm font-medium text-gray-700">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5c9cfc] opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#5c9cfc]" />
@@ -130,11 +68,11 @@ export function Hero() {
             AI-Powered Agency
           </span>
         </motion.div>
-        <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-[4rem] font-bold font-[family-name:var(--font-heading)] leading-[1.1] tracking-tight text-white">
+        <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-[4rem] font-bold font-[family-name:var(--font-heading)] leading-[1.1] tracking-tight text-[#101828]">
           Marketing x Công Nghệ x AI<br />
           <span className="bg-gradient-to-r from-[#5c9cfc] via-[#818cf8] to-[#c084fc] bg-clip-text text-transparent">Giải Pháp Thực Chiến</span>
         </motion.h1>
-        <motion.p variants={fadeUp} className="mt-5 text-base md:text-lg text-white/60 max-w-lg mx-auto leading-relaxed">
+        <motion.p variants={fadeUp} className="mt-5 text-base md:text-lg text-[#667085] max-w-lg mx-auto leading-relaxed">
           OPA kết hợp sức mạnh Marketing, Công nghệ và AI tiên tiến để giúp doanh nghiệp Việt Nam tăng trưởng bền vững.
         </motion.p>
         <motion.div variants={fadeUp} className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -144,7 +82,7 @@ export function Hero() {
             </button>
           </Link>
           <Link href="/services">
-            <button className="inline-flex items-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm px-7 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-all shadow-sm">
+            <button className="inline-flex items-center rounded-full border border-gray-300 bg-white px-7 py-3 text-sm font-semibold text-[#101828] hover:bg-gray-50 transition-all shadow-sm">
               Xem Dịch Vụ
             </button>
           </Link>
@@ -203,7 +141,7 @@ export function Hero() {
                 opacity: { duration: 0.5, delay: stage === 0 ? 0.6 + i * 0.1 : 0 },
               }}>
               <motion.div animate={{ y: [0, -5, 0] }} transition={{ duration: 3 + i * 0.4, repeat: Infinity, ease: "easeInOut" }}>
-                <div className="rounded-full overflow-hidden border-2 border-white/30 shadow-lg shadow-black/20" style={{ width: sizes[i], height: sizes[i] }}>
+                <div className="rounded-full overflow-hidden border-2 border-gray-200 shadow-lg shadow-black/10" style={{ width: sizes[i], height: sizes[i] }}>
                   <Image src={src} alt="" width={sizes[i]} height={sizes[i]} className="object-cover" unoptimized />
                 </div>
               </motion.div>
@@ -271,37 +209,37 @@ export function Hero() {
             <motion.div className="absolute" style={{ top: 95 }}
               initial={{ left: -40, opacity: 0 }} animate={{ left: [-40, -5, 160], opacity: [0, 1, 0] }}
               transition={{ duration: 4, ease: "easeInOut", times: [0, 0.12, 1] }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-white/10 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 shadow-lg border border-gray-200 px-3 py-1.5 text-[11px] font-medium text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-red-500" />Cold Lead List</span>
             </motion.div>
             <motion.div className="absolute" style={{ top: 145 }}
               initial={{ left: -50, opacity: 0 }} animate={{ left: [-50, -10, 160], opacity: [0, 1, 0] }}
               transition={{ duration: 4, ease: "easeInOut", times: [0, 0.12, 1], delay: 1.5 }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-white/10 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 shadow-lg border border-gray-200 px-3 py-1.5 text-[11px] font-medium text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-red-500" />Abandoned Leads</span>
             </motion.div>
             <motion.div className="absolute" style={{ top: 195 }}
               initial={{ left: -45, opacity: 0 }} animate={{ left: [-45, -8, 160], opacity: [0, 1, 0] }}
               transition={{ duration: 4, ease: "easeInOut", times: [0, 0.12, 1], delay: 3 }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-white/10 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 shadow-lg border border-gray-200 px-3 py-1.5 text-[11px] font-medium text-gray-700">
                 <span className="h-2 w-2 rounded-full bg-red-500" />Missed Calls</span>
             </motion.div>
             <motion.div className="absolute" style={{ top: 95 }}
               initial={{ left: 240, opacity: 0, scale: 0.8 }} animate={{ left: 310, opacity: 1, scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut", delay: 4.5 }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-emerald-400/20 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 shadow-lg border border-emerald-200 px-3 py-1.5 text-[11px] font-medium text-emerald-700">
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />Qualified Leads</span>
             </motion.div>
             <motion.div className="absolute" style={{ top: 145 }}
               initial={{ left: 240, opacity: 0, scale: 0.8 }} animate={{ left: 305, opacity: 1, scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut", delay: 5.8 }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-emerald-400/20 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 shadow-lg border border-emerald-200 px-3 py-1.5 text-[11px] font-medium text-emerald-700">
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />Booked Meetings</span>
             </motion.div>
             <motion.div className="absolute" style={{ top: 195 }}
               initial={{ left: 240, opacity: 0, scale: 0.8 }} animate={{ left: 300, opacity: 1, scale: 1 }}
               transition={{ duration: 1.5, ease: "easeOut", delay: 7 }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-amber-400/20 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 shadow-lg border border-amber-200 px-3 py-1.5 text-[11px] font-medium text-amber-700">
                 <span className="h-2 w-2 rounded-full bg-amber-500" />Scheduled Callbacks</span>
             </motion.div>
           </div>
@@ -311,17 +249,17 @@ export function Hero() {
           <div key="result-stage" className="absolute inset-0">
             <motion.div className="absolute" style={{ left: 310, top: 95 }}
               initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ duration: 0.8, delay: 0.5 }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-emerald-400/20 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 shadow-lg border border-emerald-200 px-3 py-1.5 text-[11px] font-medium text-emerald-700">
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />Qualified Leads</span>
             </motion.div>
             <motion.div className="absolute" style={{ left: 305, top: 145 }}
               initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ duration: 0.8, delay: 0.55 }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-emerald-400/20 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 shadow-lg border border-emerald-200 px-3 py-1.5 text-[11px] font-medium text-emerald-700">
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />Booked Meetings</span>
             </motion.div>
             <motion.div className="absolute" style={{ left: 300, top: 195 }}
               initial={{ opacity: 1 }} animate={{ opacity: 0 }} transition={{ duration: 0.8, delay: 0.6 }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 backdrop-blur-sm shadow-lg border border-amber-400/20 px-3 py-1.5 text-[11px] font-medium text-white">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 shadow-lg border border-amber-200 px-3 py-1.5 text-[11px] font-medium text-amber-700">
                 <span className="h-2 w-2 rounded-full bg-amber-500" />Scheduled Callbacks</span>
             </motion.div>
           </div>
@@ -330,7 +268,7 @@ export function Hero() {
         <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[220px] h-[32px]">
           <AnimatePresence mode="wait">
             <motion.span key={stage}
-              className="absolute inset-0 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm shadow-md border border-white/10 text-xs font-medium text-white"
+              className="absolute inset-0 flex items-center justify-center rounded-full bg-gray-100 shadow-md border border-gray-200 text-xs font-medium text-gray-700"
               initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.3 }}>
               <span className="h-1.5 w-1.5 rounded-full mr-1.5 shrink-0" style={{ backgroundColor: labels[stage].color }} />
@@ -346,8 +284,8 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.5 }} className="mt-8">
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="h-10 w-6 rounded-full border-2 border-white/20 flex justify-center pt-2">
-          <div className="h-2 w-1 rounded-full bg-white/40" />
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="h-10 w-6 rounded-full border-2 border-gray-300 flex justify-center pt-2">
+          <div className="h-2 w-1 rounded-full bg-gray-400" />
         </motion.div>
       </motion.div>
     </section>
