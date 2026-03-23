@@ -64,24 +64,14 @@ export function Navbar() {
 
         {/* Desktop nav links */}
         <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link, idx) => (
-            <span key={link.href} className="contents">
-              <Link
-                href={link.href}
-                className="px-4 py-2 text-sm font-medium text-[#475467] hover:text-[#101828] rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                {link.label}
-              </Link>
-              {idx === 1 && (
-                <span className="inline-flex items-center gap-2 mx-2 rounded-full bg-gray-100 border border-gray-200 px-4 py-1.5 text-xs font-medium text-gray-600">
-                  <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5c9cfc] opacity-75" />
-                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#5c9cfc]" />
-                  </span>
-                  AI-Powered
-                </span>
-              )}
-            </span>
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="px-4 py-2 text-sm font-medium text-[#475467] hover:text-[#101828] rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              {link.label}
+            </Link>
           ))}
         </div>
 

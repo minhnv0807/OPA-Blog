@@ -59,6 +59,15 @@ export function Hero() {
 
       {/* ===== HERO TEXT ===== */}
       <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="relative z-10 mx-auto max-w-4xl px-2 text-center sm:px-6">
+        <motion.div variants={fadeUp} className="mb-6 flex justify-center">
+          <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 border border-gray-200 px-5 py-2 text-sm font-medium text-gray-700">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5c9cfc] opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#5c9cfc]" />
+            </span>
+            AI-Powered Agency
+          </span>
+        </motion.div>
         <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl md:text-[4rem] font-bold font-[family-name:var(--font-heading)] leading-[1.1] tracking-tight text-[#101828]">
           Marketing x Công Nghệ x AI<br />
           <span className="bg-gradient-to-r from-[#5c9cfc] via-[#818cf8] to-[#c084fc] bg-clip-text text-transparent">Giải Pháp Thực Chiến</span>
