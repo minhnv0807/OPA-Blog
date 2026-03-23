@@ -152,7 +152,9 @@ export default function PostEditorPage() {
               onValueChange={(v: string | null) => update("category", v || "")}
             >
               <SelectTrigger className="border border-gray-200 bg-white">
-                <SelectValue placeholder="Select category" />
+                <SelectValue placeholder="Chọn danh mục">
+                  {categories.find((c) => c._id === form.category)?.name || "Chọn danh mục"}
+                </SelectValue>
               </SelectTrigger>
               <SelectContent>
                 {categories.map((cat) => (
