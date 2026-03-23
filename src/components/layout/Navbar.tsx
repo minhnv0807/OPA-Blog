@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -58,8 +59,9 @@ export function Navbar() {
       }`}
     >
       <nav className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="text-xl font-bold font-[family-name:var(--font-heading)]">
-          <span className="text-[#155eef]">OPA</span>
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/images/opa-icon.gif" alt="OPA" width={28} height={28} className="rounded" unoptimized />
+          <span className="text-xl font-bold font-[family-name:var(--font-heading)] text-[#155eef]">OPA</span>
         </Link>
 
         {/* Desktop nav links — absolute center */}
