@@ -82,7 +82,7 @@ export async function POST(req: NextRequest) {
   await invalidateCache("posts:*");
 
   if (body.status === "published") {
-    sendNewPostNotification({
+    await sendNewPostNotification({
       title: body.title,
       slug,
       excerpt: body.excerpt || "",

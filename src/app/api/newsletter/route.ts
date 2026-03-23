@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
 
   await Newsletter.create({ email: body.email.toLowerCase() });
 
-  sendNewsletterWelcome(body.email.toLowerCase());
+  await sendNewsletterWelcome(body.email.toLowerCase());
 
   return Response.json({ success: true, data: { subscribed: true } }, { status: 201 });
 }

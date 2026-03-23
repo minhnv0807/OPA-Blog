@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
     message: body.message,
   });
 
-  sendContactNotification({ name: body.name, email: body.email, message: body.message });
+  await sendContactNotification({ name: body.name, email: body.email, message: body.message });
 
   return Response.json({ success: true, data: { id: contact._id } }, { status: 201 });
 }
