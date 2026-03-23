@@ -29,7 +29,7 @@ export default function AboutPage() {
         {/* Hero */}
         <div className="text-center mb-20">
           <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#155eef] bg-[#155eef]/5 rounded-full px-4 py-1.5 mb-4">
-            Về OPA
+            Về Chúng Tôi
           </span>
           <h1 className="text-3xl md:text-5xl font-bold font-[family-name:var(--font-heading)] text-[#101828] leading-tight">
             Marketing + Công Nghệ + AI
