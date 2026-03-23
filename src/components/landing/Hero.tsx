@@ -57,18 +57,16 @@ export function Hero() {
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-4 pb-8 pt-24 sm:px-6 md:pt-16"
     >
 
-      {/* ===== BADGE — centered to full page ===== */}
-      <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="relative z-10 w-full flex justify-center mb-6">
-        <motion.div variants={fadeUp}>
-          <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 border border-gray-200 px-5 py-2 text-sm font-medium text-gray-700">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5c9cfc] opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[#5c9cfc]" />
-            </span>
-            AI-Powered Agency
+      {/* ===== BADGE — centered to full page, no animation ===== */}
+      <div className="relative z-10 w-full flex justify-center mb-6">
+        <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 border border-gray-200 px-5 py-2 text-sm font-medium text-gray-700">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5c9cfc] opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#5c9cfc]" />
           </span>
-        </motion.div>
-      </motion.div>
+          AI-Powered Agency
+        </span>
+      </div>
 
       {/* ===== HERO TEXT ===== */}
       <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="relative z-10 mx-auto max-w-4xl px-2 text-center sm:px-6">
