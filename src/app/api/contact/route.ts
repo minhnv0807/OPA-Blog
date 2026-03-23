@@ -5,7 +5,7 @@ import { requireAdmin } from "@/lib/auth";
 import { sendContactNotification } from "@/lib/mail";
 
 export async function GET(req: NextRequest) {
-  const session = await requireAdmin();
+  const session = await requireAdmin(req);
   if (!session) {
     return Response.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }

@@ -2,8 +2,8 @@ import { connectDB } from "@/lib/db";
 import { User } from "@/lib/models/User";
 import { requireAdmin } from "@/lib/auth";
 
-export async function GET() {
-  const session = await requireAdmin();
+export async function GET(req: Request) {
+  const session = await requireAdmin(req);
   if (!session) {
     return Response.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }

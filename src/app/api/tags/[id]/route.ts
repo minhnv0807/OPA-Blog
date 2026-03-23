@@ -9,7 +9,7 @@ interface RouteContext {
 }
 
 export async function PATCH(req: NextRequest, ctx: RouteContext) {
-  const session = await requireAdmin();
+  const session = await requireAdmin(req);
   if (!session) {
     return Response.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }
@@ -32,8 +32,8 @@ export async function PATCH(req: NextRequest, ctx: RouteContext) {
   return Response.json({ success: true, data: tag });
 }
 
-export async function DELETE(_req: NextRequest, ctx: RouteContext) {
-  const session = await requireAdmin();
+export async function DELETE(req: NextRequest, ctx: RouteContext) {
+  const session = await requireAdmin(req);
   if (!session) {
     return Response.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }

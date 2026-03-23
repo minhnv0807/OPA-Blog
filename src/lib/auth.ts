@@ -56,7 +56,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
 });
 
-export async function requireAdmin() {
+export async function requireAdmin(req?: Request) {
+  // API Key auth — for external agents/services
+  if (req) {
+    const authHeader = req.headers.get("authorization");
+    if (authHeader?.startsWith("Bearer ")) {
+      const apiKey = authHeader.slice(7);
+      if (process.env.API_SECRET_KEY && apiKey === process.env.API_SECRET_KEY) {
+        return {
+          user: { id: "api", name: "API Agent", email: "api@opa.vn", role: "admin" },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any;
+      }
+    }
+  }
+
+  // Session auth — for browser users
   const session = await auth();
   if (!session?.user || (session.user as { role?: string }).role !== "admin") {
     return null;

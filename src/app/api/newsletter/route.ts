@@ -4,8 +4,8 @@ import { Newsletter } from "@/lib/models/Newsletter";
 import { requireAdmin } from "@/lib/auth";
 import { sendNewsletterWelcome } from "@/lib/mail";
 
-export async function GET() {
-  const session = await requireAdmin();
+export async function GET(req: Request) {
+  const session = await requireAdmin(req);
   if (!session) {
     return Response.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }

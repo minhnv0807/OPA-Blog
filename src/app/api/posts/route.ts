@@ -60,7 +60,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const session = await requireAdmin();
+  const session = await requireAdmin(req);
   if (!session) {
     return Response.json({ success: false, error: "Unauthorized" }, { status: 401 });
   }
