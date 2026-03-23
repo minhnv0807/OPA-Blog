@@ -123,28 +123,28 @@ export async function sendNewsletterWelcome(email: string) {
     await t.sendMail({
       from: `"OPA Blog" <${process.env.SMTP_USER}>`,
       to: email,
-      subject: "Chao mung ban den voi OPA Blog!",
+      subject: "Chào mừng bạn đến với OPA Blog!",
       html: brandedEmail(`
         <div style="padding:40px 32px;text-align:center">
           <div style="display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#eff6ff;margin-bottom:16px">
             <span style="font-size:28px">&#127881;</span>
           </div>
-          <h2 style="margin:0 0 8px;color:#101828;font-size:22px">Dang Ky Thanh Cong!</h2>
+          <h2 style="margin:0 0 8px;color:#101828;font-size:22px">Đăng Ký Thành Công!</h2>
           <p style="margin:0 0 24px;color:#667085;font-size:15px;line-height:1.7;max-width:400px;display:inline-block">
-            Cam on ban da dang ky nhan tin tu OPA Blog. Ban se nhan duoc thong bao khi co bai viet moi ve AI, Marketing va Cong nghe.
+            Cảm ơn bạn đã đăng ký nhận tin từ OPA Blog. Bạn sẽ nhận được thông báo khi có bài viết mới về AI, Marketing và Công nghệ.
           </p>
 
           <div style="background:#f8fafc;border-radius:12px;padding:20px;margin:0 auto 24px;max-width:360px;border:1px solid #e2e8f0">
-            <p style="margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#98a2b3;font-weight:600">Ban se nhan duoc</p>
+            <p style="margin:0 0 4px;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;color:#98a2b3;font-weight:600">Bạn sẽ nhận được</p>
             <table style="width:100%;text-align:left;margin-top:8px">
-              <tr><td style="padding:4px 0;color:#344054;font-size:13px">&#10003; Bai viet moi nhat</td></tr>
-              <tr><td style="padding:4px 0;color:#344054;font-size:13px">&#10003; Tips & chien luoc AI</td></tr>
-              <tr><td style="padding:4px 0;color:#344054;font-size:13px">&#10003; Xu huong cong nghe</td></tr>
+              <tr><td style="padding:4px 0;color:#344054;font-size:13px">&#10003; Bài viết mới nhất</td></tr>
+              <tr><td style="padding:4px 0;color:#344054;font-size:13px">&#10003; Tips &amp; chiến lược AI</td></tr>
+              <tr><td style="padding:4px 0;color:#344054;font-size:13px">&#10003; Xu hướng công nghệ</td></tr>
             </table>
           </div>
 
           <a href="${SITE_URL}/blog" style="display:inline-block;padding:12px 32px;background:#155eef;color:white;text-decoration:none;border-radius:10px;font-size:15px;font-weight:600">
-            Doc Blog Ngay
+            Đọc Blog Ngay
           </a>
         </div>
       `),
@@ -183,7 +183,7 @@ export async function sendNewPostNotification(post: {
       <p style="margin:0 0 24px;color:#667085;font-size:15px;line-height:1.7">${post.excerpt || ""}</p>
 
       <a href="${postUrl}" style="display:inline-block;padding:12px 32px;background:#155eef;color:white;text-decoration:none;border-radius:10px;font-size:15px;font-weight:600">
-        Doc Bai Viet
+        Đọc Bài Viết
       </a>
     </div>
   `);
@@ -197,7 +197,7 @@ export async function sendNewPostNotification(post: {
         t.sendMail({
           from: `"OPA Blog" <${process.env.SMTP_USER}>`,
           to: sub.email,
-          subject: `Bai viet moi: ${post.title}`,
+          subject: `Bài viết mới: ${post.title}`,
           html,
         })
       )
