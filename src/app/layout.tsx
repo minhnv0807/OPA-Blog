@@ -24,7 +24,8 @@ export const metadata: Metadata = {
   description:
     "Explore cutting-edge AI, technology, and product insights. Your go-to source for the latest in artificial intelligence and innovation.",
   icons: {
-    icon: "/favicon.gif",
+    icon: "/favicon.png",
+    apple: "/apple-icon.png",
   },
 };
 
