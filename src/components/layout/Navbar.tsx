@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -59,8 +60,15 @@ export function Navbar() {
       }`}
     >
       <nav className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="text-xl font-bold font-[family-name:var(--font-heading)]">
-          <span className="text-[#155eef]">OPA</span>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo-web.png"
+            alt="OPA"
+            width={132}
+            height={36}
+            priority
+            className="h-9 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop nav links — absolute center */}
