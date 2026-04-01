@@ -64,10 +64,10 @@ export function Navbar() {
           <Image
             src="/logo-web.png"
             alt="OPA"
-            width={132}
-            height={36}
+            width={154}
+            height={52}
             priority
-            className="h-9 w-auto object-contain"
+            className="h-11 w-auto object-contain"
           />
         </Link>
 

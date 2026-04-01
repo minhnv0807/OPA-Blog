@@ -90,9 +90,9 @@ export function Footer() {
               <Image
                 src="/logo-web.png"
                 alt="OPA"
-                width={132}
-                height={36}
-                className="h-10 w-auto object-contain brightness-0 invert"
+                width={154}
+                height={52}
+                className="h-12 w-auto object-contain brightness-0 invert"
               />
             </Link>
             <p className="mt-4 text-sm text-gray-400 max-w-sm leading-relaxed">
