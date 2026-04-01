@@ -15,13 +15,13 @@ const dimensions = {
     width: 772,
     height: 261,
     className:
-      "h-8 sm:h-9 lg:h-10 w-auto object-contain drop-shadow-[0_6px_16px_rgba(21,94,239,0.16)] transition-transform duration-300 group-hover:scale-[1.03]",
+      "h-10 sm:h-11 lg:h-12 xl:h-[3.35rem] w-auto object-contain drop-shadow-[0_10px_24px_rgba(21,94,239,0.18)] saturate-[1.04] transition-transform duration-300 group-hover:scale-[1.035]",
   },
   footer: {
     width: 772,
     height: 261,
     className:
-      "h-10 sm:h-11 lg:h-12 w-auto object-contain opacity-95 transition-transform duration-300 group-hover:scale-[1.02]",
+      "h-11 sm:h-12 lg:h-[3.35rem] w-auto object-contain opacity-95 transition-transform duration-300 group-hover:scale-[1.02]",
   },
 } as const;
 
@@ -40,7 +40,11 @@ export function BrandLogo({
       width={config.width}
       height={config.height}
       priority={priority}
-      sizes={variant === "nav" ? "(max-width: 640px) 96px, 128px" : "160px"}
+      sizes={
+        variant === "nav"
+          ? "(max-width: 640px) 120px, (max-width: 1024px) 148px, 176px"
+          : "(max-width: 640px) 144px, 176px"
+      }
       className={cn(config.className, invert && "brightness-0 invert", className)}
     />
   );

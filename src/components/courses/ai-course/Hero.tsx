@@ -49,7 +49,7 @@ export function Hero() {
           {/* Badge */}
           <motion.div
             variants={fadeUp}
-            initial="hidden"
+            initial={false}
             animate="show"
             custom={0}
             className="inline-flex items-center gap-2 badge mb-8"
@@ -63,7 +63,7 @@ export function Hero() {
           {/* Main headline */}
           <motion.h1
             variants={fadeUp}
-            initial="hidden"
+            initial={false}
             animate="show"
             custom={0.1}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight tracking-tight"
@@ -76,7 +76,7 @@ export function Hero() {
           {/* Subheadline */}
           <motion.p
             variants={fadeUp}
-            initial="hidden"
+            initial={false}
             animate="show"
             custom={0.2}
             className="text-lg md:text-xl lg:text-2xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed"
@@ -92,7 +92,7 @@ export function Hero() {
           {/* Stats row */}
           <motion.div
             variants={fadeUp}
-            initial="hidden"
+            initial={false}
             animate="show"
             custom={0.3}
             className="grid grid-cols-3 gap-3 md:gap-4 max-w-2xl mx-auto mb-12"
@@ -118,7 +118,7 @@ export function Hero() {
           {/* CTA Buttons */}
           <motion.div
             variants={fadeUp}
-            initial="hidden"
+            initial={false}
             animate="show"
             custom={0.4}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
@@ -140,7 +140,7 @@ export function Hero() {
           {/* Trust badges */}
           <motion.div
             variants={fadeUp}
-            initial="hidden"
+            initial={false}
             animate="show"
             custom={0.5}
             className="flex flex-wrap justify-center gap-x-6 gap-y-3"
@@ -160,7 +160,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"

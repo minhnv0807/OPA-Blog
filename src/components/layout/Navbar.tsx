@@ -50,7 +50,7 @@ export function Navbar() {
 
   return (
     <motion.header
-      initial={{ y: -100 }}
+      initial={false}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -59,8 +59,8 @@ export function Navbar() {
           : "bg-white/60 backdrop-blur-sm"
       }`}
     >
-      <nav className="relative mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="group flex items-center py-2">
+      <nav className="relative mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-[5.25rem]">
+        <Link href="/" className="group flex items-center rounded-2xl py-2">
           <BrandLogo priority />
         </Link>
 
@@ -106,7 +106,7 @@ export function Navbar() {
                 <AnimatePresence>
                   {userMenuOpen && (
                     <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                      initial={false}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.96 }}
                       transition={{ duration: 0.15 }}
