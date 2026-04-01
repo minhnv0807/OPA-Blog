@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,6 +10,7 @@ import {
   LogOut,
   User,
 } from "lucide-react";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
@@ -59,16 +59,9 @@ export function Navbar() {
           : "bg-white/60 backdrop-blur-sm"
       }`}
     >
-      <nav className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/logo-web.png"
-            alt="OPA"
-            width={132}
-            height={36}
-            priority
-            className="h-9 w-auto object-contain"
-          />
+      <nav className="relative mx-auto flex h-18 max-w-7xl items-center justify-between px-4 sm:px-6">
+        <Link href="/" className="group flex items-center py-2">
+          <BrandLogo priority />
         </Link>
 
         {/* Desktop nav links — absolute center */}

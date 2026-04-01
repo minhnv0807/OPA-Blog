@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { BrandLogo } from "@/components/layout/BrandLogo";
 
 function XIcon({ className }: { className?: string }) {
   return (
@@ -86,14 +86,8 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           {/* Brand + Contact */}
           <div className="md:col-span-5">
-            <Link href="/" className="inline-flex items-center">
-              <Image
-                src="/logo-web.png"
-                alt="OPA"
-                width={132}
-                height={36}
-                className="h-10 w-auto object-contain brightness-0 invert"
-              />
+            <Link href="/" className="group inline-flex items-center py-1">
+              <BrandLogo variant="footer" invert />
             </Link>
             <p className="mt-4 text-sm text-gray-400 max-w-sm leading-relaxed">
               Đối tác công nghệ AI giúp doanh nghiệp Việt Nam tăng trưởng bền vững trong kỷ nguyên số.
