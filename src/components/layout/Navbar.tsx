@@ -14,6 +14,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const navLinks = [
   { href: "/", label: "Trang Chủ" },
+  { href: "/khoa-hoc-ai", label: "Khóa Học AI" },
   { href: "/services", label: "Dịch Vụ" },
   { href: "/blog", label: "Blog" },
   { href: "/about", label: "Giới Thiệu" },
