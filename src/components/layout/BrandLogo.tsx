@@ -1,0 +1,47 @@
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+
+type BrandLogoVariant = "nav" | "footer";
+
+interface BrandLogoProps {
+  variant?: BrandLogoVariant;
+  invert?: boolean;
+  className?: string;
+  priority?: boolean;
+}
+
+const dimensions = {
+  nav: {
+    width: 772,
+    height: 261,
+    className:
+      "h-8 sm:h-9 lg:h-10 w-auto object-contain drop-shadow-[0_6px_16px_rgba(21,94,239,0.16)] transition-transform duration-300 group-hover:scale-[1.03]",
+  },
+  footer: {
+    width: 772,
+    height: 261,
+    className:
+      "h-10 sm:h-11 lg:h-12 w-auto object-contain opacity-95 transition-transform duration-300 group-hover:scale-[1.02]",
+  },
+} as const;
+
+export function BrandLogo({
+  variant = "nav",
+  invert = false,
+  className,
+  priority = false,
+}: BrandLogoProps) {
+  const config = dimensions[variant];
+
+  return (
+    <Image
+      src="/logo-web.png"
+      alt="OPA"
+      width={config.width}
+      height={config.height}
+      priority={priority}
+      sizes={variant === "nav" ? "(max-width: 640px) 96px, 128px" : "160px"}
+      className={cn(config.className, invert && "brightness-0 invert", className)}
+    />
+  );
+}
