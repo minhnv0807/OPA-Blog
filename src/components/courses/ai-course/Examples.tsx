@@ -171,7 +171,7 @@ export function Examples() {
           {channelStats.map((ch) => (
             <div
               key={ch.name}
-              className="bg-slate-50 border border-gray-200 rounded-xl px-5 py-3 text-center min-w-[140px]"
+              className="bg-slate-50 border border-gray-200 rounded-xl px-4 sm:px-5 py-3 text-center flex-1 min-w-[100px] sm:min-w-[140px]"
             >
               <div className="text-xl font-black text-opa-blue">{ch.revenue}</div>
               <div className="text-xs font-semibold text-slate-700 mt-0.5">
