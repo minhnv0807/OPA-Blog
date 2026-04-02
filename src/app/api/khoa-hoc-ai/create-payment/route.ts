@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
       checkoutUrl: paymentLink.checkoutUrl,
       orderCode,
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("AI course payment creation error:", error);
 
     if (error instanceof z.ZodError) {
@@ -85,8 +85,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const message =
+      error instanceof Error ? error.message : "Unknown error";
+    console.error("PayOS error detail:", message);
+
     return NextResponse.json(
-      { error: "Không thể tạo thanh toán. Vui lòng thử lại." },
+      { error: `Không thể tạo thanh toán: ${message}` },
       { status: 500 }
     );
   }

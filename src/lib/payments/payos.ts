@@ -7,28 +7,22 @@ let _payos: PayOSClient | null = null;
 export function getPayOS(): PayOSClient {
   if (_payos) return _payos;
 
-  const clientId = process.env.PAYOS_CLIENT_ID;
-  const apiKey = process.env.PAYOS_API_KEY;
-  const checksumKey = process.env.PAYOS_CHECKSUM_KEY;
-
-  if (!clientId || !apiKey || !checksumKey) {
-    throw new Error(
-      "Missing PayOS credentials. Set PAYOS_CLIENT_ID, PAYOS_API_KEY, and PAYOS_CHECKSUM_KEY in .env.local"
-    );
-  }
-
-  _payos = new PayOS({
-    clientId,
-    apiKey,
-    checksumKey,
-  });
+  // PayOS v2 SDK auto-reads PAYOS_CLIENT_ID, PAYOS_API_KEY,
+  // PAYOS_CHECKSUM_KEY from process.env when not passed explicitly.
+  _payos = new PayOS();
   return _payos;
 }
 
-// Keep backward-compat export (lazily resolved)
+// Lazily-resolved singleton — first property access triggers init.
 export const payos = new Proxy({} as PayOSClient, {
   get(_target, prop) {
-    return (getPayOS() as unknown as Record<string | symbol, unknown>)[prop];
+    const client = getPayOS();
+    const value = (client as unknown as Record<string | symbol, unknown>)[prop];
+    // Bind methods so `this` stays on the real client / sub-resource
+    if (typeof value === "function") {
+      return value.bind(client);
+    }
+    return value;
   },
 });
 
