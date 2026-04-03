@@ -113,12 +113,15 @@ export default function RootLayout({
                 "AI Marketing Agency - Kết hợp Marketing, Công nghệ và AI giúp doanh nghiệp Việt Nam tăng trưởng bền vững.",
               address: {
                 "@type": "PostalAddress",
+                streetAddress: "Số 18 Galaxy 4 Vạn Phúc, Tố Hữu",
+                addressLocality: "Hà Đông",
+                addressRegion: "Hà Nội",
                 addressCountry: "VN",
               },
               sameAs: [],
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+84-848-508-585",
+                telephone: "+84-966-910-397",
                 contactType: "customer service",
                 availableLanguage: ["Vietnamese", "English"],
               },

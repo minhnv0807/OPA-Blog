@@ -39,8 +39,8 @@ export default function ContactPage() {
 
   const contactInfo = [
     { icon: Mail, label: "Email", value: "hello@opa.vn", href: "mailto:hello@opa.vn" },
-    { icon: Phone, label: "Hotline", value: "0909 xxx xxx", href: "tel:0909000000" },
-    { icon: MapPin, label: "Văn phòng", value: "TP. Hồ Chí Minh, Việt Nam", href: "#" },
+    { icon: Phone, label: "Hotline", value: "0966 910 397", href: "tel:0966910397" },
+    { icon: MapPin, label: "Văn phòng", value: "Số 18 Galaxy 4 Vạn Phúc, Tố Hữu, Hà Đông", href: "#" },
   ];
 
   return (

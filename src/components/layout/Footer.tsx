@@ -105,13 +105,13 @@ export function Footer() {
                 <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-white/5">
                   <Phone className="h-3.5 w-3.5 text-[#155eef]" />
                 </div>
-                0909 xxx xxx
+                0966 910 397
               </div>
               <div className="flex items-center gap-3 text-sm text-gray-400">
                 <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-white/5">
                   <MapPin className="h-3.5 w-3.5 text-[#155eef]" />
                 </div>
-                TP. Hồ Chí Minh, Việt Nam
+                Số 18 Galaxy 4 Vạn Phúc, Tố Hữu, Hà Đông
               </div>
             </div>
 
