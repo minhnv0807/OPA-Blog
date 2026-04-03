@@ -10,6 +10,8 @@ import {
   Mail,
   LogOut,
   Shield,
+  BookOpen,
+  GraduationCap,
 } from "lucide-react";
 
 const sidebarLinks = [
@@ -18,6 +20,8 @@ const sidebarLinks = [
   { href: "/admin/categories", label: "Categories", icon: FolderOpen, adminOnly: false },
   { href: "/admin/messages", label: "Messages", icon: MessageSquare, adminOnly: false },
   { href: "/admin/subscribers", label: "Subscribers", icon: Mail, adminOnly: false },
+  { href: "/admin/courses", label: "Khóa học", icon: BookOpen, adminOnly: false },
+  { href: "/admin/enrollments", label: "Enrollments", icon: GraduationCap, adminOnly: true },
   { href: "/admin/users", label: "Users", icon: Users, adminOnly: true },
 ];
 
