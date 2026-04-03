@@ -19,6 +19,7 @@ export interface IPost extends Document {
     metaDescription?: string;
     ogImage?: string;
   };
+  accessLevel: "free" | "share" | "tier_10000000" | "tier_15000000" | "custom";
 }
 
 const PostSchema = new Schema<IPost>(
@@ -45,6 +46,11 @@ const PostSchema = new Schema<IPost>(
       metaTitle: String,
       metaDescription: String,
       ogImage: String,
+    },
+    accessLevel: {
+      type: String,
+      default: "free",
+      enum: ["free", "share", "tier_10000000", "tier_15000000", "custom"],
     },
   },
   { timestamps: true }
